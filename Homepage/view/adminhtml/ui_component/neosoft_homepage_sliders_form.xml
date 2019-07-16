@@ -55,7 +55,37 @@
 				</validation>
 			</settings>
 		</field>
-		<field formElement="input" name="status" sortOrder="20">
+
+
+		 <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="array">
+                <item name="1" xsi:type="array">
+                    <item name="value" xsi:type="number">1</item>
+                    <item name="label" xsi:type="string" translate="true">Active</item>
+                </item>
+                <item name="2" xsi:type="array">
+                    <item name="value" xsi:type="number">2</item>
+                    <item name="label" xsi:type="string" translate="true">Inactive</item>
+                </item>
+            </item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">status</item>
+                    <item name="dataScope" xsi:type="string">status</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                </item>
+            </argument>
+        </field>
+
+
+
+
+
+<!-- 		<field formElement="input" name="status" sortOrder="20">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">Sliders</item>
@@ -69,8 +99,8 @@
 					<rule name="required-entry" xsi:type="boolean">true</rule>
 				</validation>
 			</settings>
-		</field>
-		<field formElement="input" name="type" sortOrder="30">
+		</field> -->
+<!-- 		<field formElement="input" name="type" sortOrder="30">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="source" xsi:type="string">Sliders</item>
@@ -84,7 +114,32 @@
 					<rule name="required-entry" xsi:type="boolean">true</rule>
 				</validation>
 			</settings>
-		</field>
+		</field> -->
+
+		<field name="type">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="array">
+                <item name="1" xsi:type="array">
+                    <item name="value" xsi:type="number">1</item>
+                    <item name="label" xsi:type="string" translate="true">Desktop</item>
+                </item>
+                <item name="2" xsi:type="array">
+                    <item name="value" xsi:type="number">2</item>
+                    <item name="label" xsi:type="string" translate="true">Mobile</item>
+                </item>
+            </item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Type</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">type</item>
+                    <item name="dataScope" xsi:type="string">type</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                </item>
+            </argument>
+        </field>
+
 		<field formElement="input" name="url" sortOrder="40">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
