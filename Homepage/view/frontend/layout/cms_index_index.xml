@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<head> 
+	<css src="Neosoft_Homepage::css/flexslider.css"/>
+<!--       <script src="Neosoft_Homepage::js/jquery.flexslider.js"/>-->
+       <script src="Neosoft_Homepage::js/customslider.js"/>
+</head>
+	<body>
+		<referenceContainer name="content">
+			<block class="Neosoft\Homepage\Block\Index\Index" name="index.index" template="Neosoft_Homepage::index/index.phtml"/>
+		</referenceContainer>
+	</body>
+</page>

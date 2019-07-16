@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		 <add id="Neosoft_Homepage::hparent" title="Neosoft Homepage" module="Neosoft_Homepage" sortOrder="51" resource="Neosoft_Homepage::hparent" parent="Magento_Backend::content" />
+		<add action="neosoft_homepage/sliders/index" id="Neosoft_Homepage::neosoft_homepage_sliders" module="Neosoft_Homepage" parent="Neosoft_Homepage::hparent" resource="Magento_Backend::content" sortOrder="9999" title="Sliders" />
+		<add action="neosoft_homepage/banner/index" id="Neosoft_Homepage::neosoft_homepage_banner" module="Neosoft_Homepage" parent="Neosoft_Homepage::hparent" resource="Magento_Backend::content" sortOrder="9999" title="Banner"/>
+	</menu>
+</config>

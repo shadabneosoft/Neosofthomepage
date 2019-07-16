@@ -1,0 +1,8 @@
+var config = {
+    map: {
+        '*': {
+            	nssldrequire: 'Neosoft_Homepage/js/customslider',
+		nssldrequire2: 'Neosoft_Homepage/js/jquery.flexslider',
+        }
+    }
+};

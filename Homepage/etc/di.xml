@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Neosoft\Homepage\Api\SlidersRepositoryInterface" type="Neosoft\Homepage\Model\SlidersRepository"/>
+	<preference for="Neosoft\Homepage\Api\Data\SlidersInterface" type="Neosoft\Homepage\Model\Data\Sliders"/>
+	<preference for="Neosoft\Homepage\Api\Data\SlidersSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Neosoft\Homepage\Model\ResourceModel\Sliders\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">neosoft_homepage_sliders</argument>
+			<argument name="resourceModel" xsi:type="string">Neosoft\Homepage\Model\ResourceModel\Sliders\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="neosoft_homepage_sliders_listing_data_source" xsi:type="string">Neosoft\Homepage\Model\ResourceModel\Sliders\Grid\Collection</item>
+				<item name="neosoft_homepage_banner_listing_data_source" xsi:type="string">Neosoft\Homepage\Model\ResourceModel\Banner\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<preference for="Neosoft\Homepage\Api\BannerRepositoryInterface" type="Neosoft\Homepage\Model\BannerRepository"/>
+	<preference for="Neosoft\Homepage\Api\Data\BannerInterface" type="Neosoft\Homepage\Model\Data\Banner"/>
+	<preference for="Neosoft\Homepage\Api\Data\BannerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Neosoft\Homepage\Model\ResourceModel\Banner\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">neosoft_homepage_banner</argument>
+			<argument name="resourceModel" xsi:type="string">Neosoft\Homepage\Model\ResourceModel\Banner\Collection</argument>
+		</arguments>
+	</virtualType>
+
+
+<virtualType name="Neosoft\Homepage\HomepageImageUpload" type="Neosoft\Homepage\Model\ImageUploader">
+    <arguments>
+            <argument name="baseTmpPath" xsi:type="string">test/tmp</argument>
+            <argument name="basePath" xsi:type="string">test</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+    </arguments>
+</virtualType>
+<type name="Neosoft\Homepage\Controller\Adminhtml\Index\Upload">
+    <arguments>
+            <argument name="imageUploader" xsi:type="object">Neosoft\Homepage\HomepageImageUpload</argument>
+    </arguments>
+</type>
+
+
+</config>
