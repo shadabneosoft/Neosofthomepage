@@ -40,7 +40,7 @@
 		<paging name="listing_paging"/>
 	</listingToolbar>
 	<columns name="neosoft_homepage_sliders_columns">
-		<settings>
+		<!-- <settings>
 			<editorConfig>
 				<param name="selectProvider" xsi:type="string">neosoft_homepage_sliders_listing.neosoft_homepage_sliders_listing.neosoft_homepage_sliders_columns.ids</param>
 				<param name="enabled" xsi:type="boolean">true</param>
@@ -60,7 +60,7 @@
 					</item>
 				</param>
 			</childDefaults>
-		</settings>
+		</settings> -->
 		<selectionsColumn name="ids">
 			<settings>
 				<indexField>sliders_id</indexField>
@@ -85,7 +85,7 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="status">
+		<!-- <column name="status">
 			<settings>
 			<label translate="true">Status</label>
 				<editor>
@@ -95,20 +95,33 @@
 					</validation>
 				</editor>
 			</settings>
-		</column>
-		<column name="type">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Type</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">true</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
+		</column> -->
+
+<column name="status" class="Neosoft\Homepage\Ui\Component\Listing\Column\Status">
+    <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="sortOrder" xsi:type="number">20</item>
+            <item name="label" translate="true" xsi:type="string">Status</item>
+            <item name="dataType" xsi:type="string">select</item>
+        </item>
+    </argument>
+</column>
+
+<column name="type" class="Neosoft\Homepage\Ui\Component\Listing\Column\Type">
+    <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="sortOrder" xsi:type="number">40</item>
+            <item name="label" translate="true" xsi:type="string">Type</item>
+            <item name="dataType" xsi:type="string">select</item>
+        </item>
+    </argument>
+</column>
 		<column name="url">
+			<argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="sortOrder" xsi:type="number">30</item>
+            </item>
+        </argument>
 			<settings>
 			<label translate="true">Url</label>
 				<editor>

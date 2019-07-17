@@ -33,6 +33,15 @@ class Save extends \Magento\Backend\App\Action
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getPostValue();
         if ($data) {
+            if (isset($data['image'][0]['name']) && isset($data['image'][0]['tmp_name'])) {
+                $data['image'] =$data['image'][0]['name'];
+                $this->imageUploader = \Magento\Framework\App\ObjectManager::getInstance()->get('Neosoft\Homepage\HomepageImageUpload');
+                $this->imageUploader->moveFileFromTmp($data['image']);
+            } elseif (isset($data['image'][0]['image']) && !isset($data['image'][0]['tmp_name'])) {
+                $data['image'] = $data['image'][0]['image'];
+            } else {
+                $data['image'] = null;
+            }
             $id = $this->getRequest()->getParam('banner_id');
         
             $model = $this->_objectManager->create(\Neosoft\Homepage\Model\Banner::class)->load($id);

@@ -3,9 +3,8 @@
  * Copyright 2012 WooThemes
  * Contributing Author: Tyler Smith
  */
-define([
-    "jquery"
-],function ($) {
+
+(function ($) {
 
   var focused = true;
 

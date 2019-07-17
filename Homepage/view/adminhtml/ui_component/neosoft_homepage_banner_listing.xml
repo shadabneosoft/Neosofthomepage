@@ -40,7 +40,7 @@
 		<paging name="listing_paging"/>
 	</listingToolbar>
 	<columns name="neosoft_homepage_banner_columns">
-		<settings>
+		<!-- <settings>
 			<editorConfig>
 				<param name="selectProvider" xsi:type="string">neosoft_homepage_banner_listing.neosoft_homepage_banner_listing.neosoft_homepage_banner_columns.ids</param>
 				<param name="enabled" xsi:type="boolean">true</param>
@@ -60,7 +60,7 @@
 					</item>
 				</param>
 			</childDefaults>
-		</settings>
+		</settings> -->
 		<selectionsColumn name="ids">
 			<settings>
 				<indexField>banner_id</indexField>
@@ -85,35 +85,24 @@
 				</editor>
 			</settings>
 		</column>
-		<actionsColumn class="Neosoft\Homepage\Ui\Component\Listing\Column\BannerActions" name="actions">
-			<settings>
-				<indexField>banner_id</indexField>
-				<resizeEnabled>false</resizeEnabled>
-				<resizeDefaultWidth>107</resizeDefaultWidth>
-			</settings>
-		</actionsColumn>
-		<column name="status">
-			<settings>
-<label translate="true">Status</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">true</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="type">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Type</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">true</rule>
-					</validation>
-				</editor>
-			</settings>
+		
+<column name="status" class="Neosoft\Homepage\Ui\Component\Listing\Column\Status">
+    <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="sortOrder" xsi:type="number">20</item>
+            <item name="label" translate="true" xsi:type="string">Status</item>
+            <item name="dataType" xsi:type="string">select</item>
+        </item>
+    </argument>
+</column>
+		<column name="type" class="Neosoft\Homepage\Ui\Component\Listing\Column\Type">
+		    <argument name="data" xsi:type="array">
+		        <item name="config" xsi:type="array">
+		            <item name="sortOrder" xsi:type="number">20</item>
+		            <item name="label" translate="true" xsi:type="string">Type</item>
+		            <item name="dataType" xsi:type="string">select</item>
+		        </item>
+		    </argument>
 		</column>
 		<column name="url">
 			<settings>
@@ -126,29 +115,35 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="image">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Image</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
+		<column name="image" class="Neosoft\Homepage\Ui\Component\Listing\Column\Thumbnail">
+		    <argument name="data" xsi:type="array">
+		        <item name="config" xsi:type="array">
+		            <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/thumbnail</item>
+		            <item name="sortable" xsi:type="boolean">false</item>
+		            <item name="altField" xsi:type="string">title</item>
+		            <item name="has_preview" xsi:type="string">1</item>
+		            <item name="label" xsi:type="string" translate="true">Thumbnail</item>
+		        </item>
+		    </argument>
 		</column>
 		<column name="created_at">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">created_at</label>
+				<label translate="true">Created</label>
 			</settings>
 		</column>
 		<column name="updated_at">
 			<settings>
 				<filter>text</filter>
-				<label translate="true">updated_at</label>
+				<label translate="true">Updated</label>
 			</settings>
 		</column>
+		<actionsColumn class="Neosoft\Homepage\Ui\Component\Listing\Column\BannerActions" name="actions">
+			<settings>
+				<indexField>banner_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
 	</columns>
 </listing>

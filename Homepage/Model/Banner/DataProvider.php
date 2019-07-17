@@ -31,11 +31,13 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $primaryFieldName,
         $requestFieldName,
         CollectionFactory $collectionFactory,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
         DataPersistorInterface $dataPersistor,
         array $meta = [],
         array $data = []
     ) {
         $this->collection = $collectionFactory->create();
+        $this->_storeManager=$storeManager;
         $this->dataPersistor = $dataPersistor;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
@@ -47,12 +49,20 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      */
     public function getData()
     {
+        $baseurl =  $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
         if (isset($this->loadedData)) {
             return $this->loadedData;
         }
         $items = $this->collection->getItems();
         foreach ($items as $model) {
-            $this->loadedData[$model->getId()] = $model->getData();
+             $this->loadedData[$model->getId()] = $model->getData();
+            $temp = $model->getData();
+             if($temp['image']):
+            $img = [];
+            $img[0]['image'] = $temp['image'];
+            $img[0]['url'] = $baseurl.'test/'.$temp['image'];
+            $temp['image'] = $img;
+            endif;
         }
         $data = $this->dataPersistor->get('neosoft_homepage_banner');
         
@@ -61,7 +71,21 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $model->setData($data);
             $this->loadedData[$model->getId()] = $model->getData();
             $this->dataPersistor->clear('neosoft_homepage_banner');
-        }
+        }else{
+    if($items):
+            if ($model->getData('image') != null) {
+
+                $t2[$model->getId()] = $temp;     
+                 
+                return $t2;
+            } else {                
+                 
+            
+               return $this->loadedData;
+                
+            }
+            endif;
+    }
         
         return $this->loadedData;
     }

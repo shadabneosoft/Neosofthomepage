@@ -18,4 +18,8 @@ class Index extends \Magento\Framework\View\Element\Template
     ) {
         parent::__construct($context, $data);
     }
+     public function getCacheLifetime()
+    {
+        return null;
+    }
 }

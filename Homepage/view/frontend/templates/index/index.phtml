@@ -1,16 +1,45 @@
+<?php $helperObj = $this->helper('Neosoft\Homepage\Helper\Data'); 
+$enabled = $helperObj->isEnabled();
+$isMobile = $helperObj->isMobile();
+if($enabled){
+  $image_url = $helperObj->imageUrl();
+  if($isMobile){
+    $sliders = $helperObj->getMobileSliders();
+  }else{
+    $sliders = $helperObj->getDesktopSliders();
+  }
+  
+?>
 <div class="flexslider">
   <ul class="slides">
+ <?php  foreach($sliders as $k=>$slides){ 
+      $image_full_path = $image_url.$slides->getImage();
+  ?>
+  
     <li>
-      <img src="http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg" />
+      <img src="<?php echo $image_full_path; ?>" alt="<?php echo $slides->getName(); ?>" />
     </li>
-    <li>
-      <img src="http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg" />
-    </li>
-    <li>
-      <img src="http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg" />
-    </li>
-    <li>
-      <img src="http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg" />
-    </li>
+    <?php } ?>
   </ul>
 </div>
+
+    <script>
+    (function  () {
+        require(["jquery","owlCarousel"],function($) {
+            $(document).ready(function() {
+                $(".flexslider").owlCarousel(
+                {
+                  animateOut: 'slideOutDown',
+                  animateIn: 'flipInX',
+                  items:1,
+                  margin:30,
+                  stagePadding:30,
+                  smartSpeed:450
+                });
+                });
+            });
+    })();
+    </script>
+
+
+<?php } ?>
