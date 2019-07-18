@@ -5,6 +5,7 @@
 			<general>
 				<slideron>1</slideron>
 				<banneron>1</banneron>
+				<sliderspeed>2000</sliderspeed>
 			</general>
 		</homepage>
 	</default>

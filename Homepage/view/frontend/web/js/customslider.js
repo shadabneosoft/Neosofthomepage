@@ -1,17 +1,11 @@
-/**
- * @author Neosoft tech
- */
-
-//define([
-//    "jquery",
-//], function($) {
-  //  "use strict";
-	//$(window).load(function() {
-	  //$('.flexslider').flexslider({
-	    //animation: "slide"
-	  //});
-	//});
-//});
-define('moduleOne',function() {
-    return { helloWorld: function() { console.log('hello world!') } };
-})
+// require(['jquery','bannerslider'],function($){
+//     $(window).load(function() {
+//         $('.flexslider').flexslider({
+//             animation: "fade",
+//             controlNav: "thumbnails",
+//             slideshowSpeed: 2000,
+//             minItems: 2,
+//             maxItems: 4
+//         });
+//     });
+// });

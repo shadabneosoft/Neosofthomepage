@@ -1,6 +1,7 @@
 <?php $helperObj = $this->helper('Neosoft\Homepage\Helper\Data'); 
 $enabled = $helperObj->isEnabled();
 $isMobile = $helperObj->isMobile();
+/* If slider is enabled then it will go into this condition*/
 if($enabled){
   $image_url = $helperObj->imageUrl();
   if($isMobile){
@@ -8,8 +9,10 @@ if($enabled){
   }else{
     $sliders = $helperObj->getDesktopSliders();
   }
-  
+  /* If slider existed 1 or more than onethen it will go into this condition*/
+if($sliders){ 
 ?>
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Neosoft_Homepage::css/flexslider.css')?>">
 <div class="flexslider">
   <ul class="slides">
  <?php  foreach($sliders as $k=>$slides){ 
@@ -22,24 +25,18 @@ if($enabled){
     <?php } ?>
   </ul>
 </div>
-
-    <script>
-    (function  () {
-        require(["jquery","owlCarousel"],function($) {
-            $(document).ready(function() {
-                $(".flexslider").owlCarousel(
-                {
-                  animateOut: 'slideOutDown',
-                  animateIn: 'flipInX',
-                  items:1,
-                  margin:30,
-                  stagePadding:30,
-                  smartSpeed:450
-                });
-                });
-            });
-    })();
-    </script>
-
-
-<?php } ?>
+<script type="text/javascript">
+  require(['jquery','bannerslider'],function($){
+    $(window).load(function() {
+        $('.flexslider').flexslider({
+            animation: "fade",
+            slideshowSpeed: 2000,
+            itemWidth: 210,
+            itemMargin: 5,
+            minItems: 2,
+            maxItems: 4
+        });
+    });
+});
+</script>
+<?php }} ?>

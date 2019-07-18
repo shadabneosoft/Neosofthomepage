@@ -48,8 +48,13 @@ class Data extends AbstractHelper
             }
         }
         public function getMobileSliders(){
-            $query = $this->sliders->create()
+            $result_sliders = $this->sliders->create()
             ->getCollection()->addFieldToFilter('type', 2)->addFieldToFilter('status',1);
+            if($result_sliders->count()>0){
+
+                return $result_sliders;
+            }
+            return false;
         }
         public function getDesktopSliders(){
             $result_sliders = $this->sliders->create()
@@ -58,6 +63,7 @@ class Data extends AbstractHelper
 
                 return $result_sliders;
             }
+            return false;
         }
         public function imageUrl(){
             return $baseurl =  $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'test/';

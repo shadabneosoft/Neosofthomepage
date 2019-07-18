@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 <head> 
-	<!-- <css src="Neosoft_Homepage::css/flexslider.css"/> -->
+	<!-- <css src="Neosoft_Homepage::css/flexslider.css"/>
 	<css src="Neosoft_Homepage::css/owl.carousel.min.css"/>
 	<css src="Neosoft_Homepage::css/owl.theme.default.min.css"/>
-	<css src="Neosoft_Homepage::css/animate.css"/>
+	<css src="Neosoft_Homepage::css/animate.css"/>-->
       <!-- <script src="Neosoft_Homepage::js/jquery.flexslider.js"/> -->
       <!-- <script src="Neosoft_Homepage::js/jquery-flexslider-min.js"/> -->
-       <script src="Neosoft_Homepage::js/customslider.js"/>
+      <!--<script src="Neosoft_Homepage::js/customslider.js"/>-->
 </head>
 	<body>
 		<referenceContainer name="content">

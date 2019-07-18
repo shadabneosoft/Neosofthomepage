@@ -136,5 +136,17 @@
                 </item>
             </argument>
         </field>
+        <field name="content" template="ui/content/content" formElement="wysiwyg">
+            <settings>
+                <label>Content</label>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
 	</fieldset>
 </form>
